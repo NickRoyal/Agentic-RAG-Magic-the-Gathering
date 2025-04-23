@@ -211,7 +211,7 @@ async def crawl_parallel(urls: List[str], max_concurrent: int = 3):
 
     schema = JsonCssExtractionStrategy(schema)
 
-    crawl_config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS,
+    crawl_config = CrawlerRunConfig(cache_mode=CacheMode.PASS,
                                     extraction_strategy = schema
     )
 

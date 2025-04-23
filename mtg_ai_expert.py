@@ -1,12 +1,10 @@
 from __future__ import annotations as _annotations
 from dataclasses import dataclass
 from dotenv import load_dotenv
-import logfire
 import asyncio
-import httpx
 import os
 import json
-from pydantic_ai import Agent, ModelRetry, RunContext
+from pydantic_ai import Agent, RunContext
 from pydantic_ai.models.openai import OpenAIModel
 from openai import AsyncOpenAI
 from supabase import Client
@@ -16,8 +14,6 @@ load_dotenv()
 
 llm = os.getenv('AI','gpt-4o')
 model = OpenAIModel(llm)
-
-#logfire.configure(send_to_logfire='if-token-present')
 
 @dataclass
 class MTGDeps:
@@ -231,3 +227,4 @@ async def get_card_details(ctx: RunContext[MTGDeps], card_name:str) -> str:
 	except Exception as e:
 		print(f"Error retrieving card details for {card_name}: {e}")
 		return f"Error retrieving card details: {str(e)}"
+	

@@ -101,7 +101,7 @@ async def get_title_and_summary(chunk: str, url: str) -> Dict[str, str]:
             model=os.getenv("AI", "gpt-4o"),
             messages=[
                 {"role": "system", "content": system_prompt},
-                {"role": "user", "content": f"URL: {url}\n\nContent:\n{chunk[:1000]}..."}  # Send first 500 chars for context
+                {"role": "user", "content": f"URL: {url}\n\nContent:\n{chunk[:1000]}..."}  # Send first 1000 chars for context
             ],
             response_format={ "type": "json_object" }
         )
@@ -161,7 +161,7 @@ async def insert_chunk(chunk: ProcessedChunk):
             "embedding": chunk.embedding
         }
         
-        result = supabase.table("site_pages").insert(data).execute()
+        result = supabase.table("demo").insert(data).execute()
         print(f"Inserted chunk {chunk.chunk_number} for {chunk.url}")
         return result
     except Exception as e:
