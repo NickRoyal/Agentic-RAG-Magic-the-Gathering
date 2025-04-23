@@ -242,7 +242,7 @@ def get_mtg_wiki_urls() -> List[str]:
         return []
 
 async def main():
-    # Get URLs from Pydantic AI docs
+    # Get URLs MTG Wiki docs
     urls = get_mtg_wiki_urls()
     if not urls:
         print("No URLs found to crawl")
