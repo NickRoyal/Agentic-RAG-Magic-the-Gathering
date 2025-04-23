@@ -223,7 +223,7 @@ async def crawl_parallel(urls: List[str], max_concurrent: int = 5):
         await crawler.close()
 
 def get_mtg_wiki_urls() -> List[str]:
-    """Get URLs from Pydantic AI docs sitemap."""
+    """Get URLs from MTG Wiki sitemap."""
     sitemap_url = "https://mtg.fandom.com/sitemap-newsitemapxml-index.xml"
     try:
         response = requests.get(sitemap_url)
